@@ -1,0 +1,32 @@
+# Publish to npm on GitHub Release — tokenless, via npm Trusted Publishing (OIDC).
+#
+# No NPM_TOKEN needed: `id-token: write` lets the npm CLI authenticate to the
+# registry with a short-lived OIDC credential and attach build provenance.
+#
+# One-time setup on npmjs.com (after the package exists):
+#   npmjs.com → the package → Settings → Trusted Publisher → add
+#   GitHub Actions publisher:  repo inetsp/migrate-from-toggl, workflow publish.yml
+# Then every published GitHub Release auto-publishes the version in package.json.
+name: publish
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  id-token: write # required for trusted publishing + provenance
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - run: npm install -g npm@latest # trusted publishing needs npm >= 11.5
+      - run: node --test test/*.test.mjs
+      - run: npm publish --provenance --access public

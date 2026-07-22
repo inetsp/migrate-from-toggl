@@ -1,0 +1,44 @@
+{
+  "name": "migrate-from-toggl",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Pull your Toggl time entries and turn them into copy-paste-ready client reports and invoices.",
+  "license": "MIT",
+  "homepage": "https://rec.work",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inetsp/migrate-from-toggl.git"
+  },
+  "bugs": {
+    "url": "https://github.com/inetsp/migrate-from-toggl/issues"
+  },
+  "keywords": [
+    "toggl",
+    "time-tracking",
+    "time-entries",
+    "timesheet",
+    "export",
+    "migration",
+    "invoice",
+    "report",
+    "csv",
+    "rec"
+  ],
+  "bin": {
+    "migrate-from-toggl": "bin/migrate-from-toggl.mjs"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "report": "node bin/toggl-report.mjs",
+    "invoice": "node bin/toggl-invoice.mjs"
+  }
+}

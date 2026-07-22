@@ -1,0 +1,23 @@
+# Environment & secrets — NEVER commit
+.env
+.env.*
+!.env.example
+*.token
+
+# This tool's output — filename is arbitrary (you choose it via shell
+# redirection, see README examples like april.txt, my-toggl-history.json),
+# so a naming-convention-based pattern isn't reliable. Every output
+# format (report, invoice, CSV, JSON) contains client-sensitive data
+# regardless of what it's named, so these extensions are ignored broadly.
+*.txt
+*.csv
+*.json
+!package.json
+
+# Node
+node_modules/
+npm-debug.log
+
+# OS
+.DS_Store
+Thumbs.db
