@@ -4,6 +4,7 @@
   "type": "module",
   "description": "Pull your Toggl time entries and turn them into copy-paste-ready client reports and invoices.",
   "license": "MIT",
+  "author": "Suomen Alustapalvelu Oy <noreply@rec.work> (https://rec.work)",
   "homepage": "https://rec.work",
   "repository": {
     "type": "git",
